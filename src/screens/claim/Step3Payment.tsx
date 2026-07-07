@@ -187,8 +187,8 @@ function ContactSection({
       </Field>
 
       <Field label="Contact Number" required>
-        <div className="flex gap-2">
-          <div className="flex h-10 w-14 shrink-0 items-center justify-center rounded-md border border-input bg-muted/40 text-sm text-muted-foreground">
+        <div className="flex gap-3">
+          <div className="flex h-12 shrink-0 items-center justify-center rounded-lg border border-black/[0.09] bg-white px-4 text-base text-[#212121]">
             +65
           </div>
           <Input value={contact} onChange={(e) => onContact(e.target.value)} />
@@ -216,7 +216,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-2">
       <Label required={required}>{label}</Label>
       {children}
     </div>

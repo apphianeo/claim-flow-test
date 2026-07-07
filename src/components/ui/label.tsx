@@ -11,7 +11,8 @@ const Label = React.forwardRef<
   <LabelPrimitive.Root
     ref={ref}
     className={cn(
-      "text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+      // UOI DS input label: Noto Sans Regular 14px / 1.5, #212121
+      "text-sm font-normal leading-normal text-[#212121] peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
       className
     )}
     {...props}

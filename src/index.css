@@ -35,8 +35,11 @@
     --destructive: 0 72% 51%; /* #DC2626 error */
     --destructive-foreground: 0 0% 100%;
 
-    --success: 145 63% 30%; /* completion check green */
+    --success: 159 87% 24%; /* #08754F status-success */
     --success-foreground: 0 0% 100%;
+
+    --caution: 36 100% 57%; /* #FFA826 status-caution */
+    --caution-foreground: 0 0% 13%;
 
     --border: 220 13% 88%;
     --input: 220 13% 85%;

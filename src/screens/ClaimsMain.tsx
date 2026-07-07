@@ -9,7 +9,7 @@ function StatusBadge({ status }: { status: ClaimRecord["status"] }) {
     <span
       className={cn(
         "text-sm font-medium",
-        status === "Completed" ? "text-success" : "text-orange-500"
+        status === "Completed" ? "text-success" : "text-caution"
       )}
     >
       {status}

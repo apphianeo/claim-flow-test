@@ -346,7 +346,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-2">
       <Label required={required}>{label}</Label>
       {children}
     </div>
