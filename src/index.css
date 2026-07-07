@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Centralized theme tokens (shadcn/ui convention).
+  Change the UOI brand color, radius, or neutrals here — not in components.
+  Palette pulled from the Figma "Claims - FNOL" design tokens.
+*/
+@layer base {
+  :root {
+    /* Neutral surfaces */
+    --background: 210 33% 97%; /* app page background (light blue-gray) */
+    --foreground: 0 0% 13%; /* #212121 text-primary */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    /* Brand — UOI "sure blue" #005EB8 */
+    --primary: 209 100% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 33% 96%;
+    --secondary-foreground: 0 0% 13%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 43%; /* #6E6E6E text-secondary */
+
+    --accent: 209 100% 96%;
+    --accent-foreground: 209 100% 30%;
+
+    --destructive: 0 72% 51%; /* #DC2626 error */
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 145 63% 30%; /* completion check green */
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 13% 88%;
+    --input: 220 13% 85%;
+    --ring: 209 100% 36%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Noto Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
