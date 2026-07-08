@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { DateField } from "@/components/ui/date-field";
 import {
   Select,
   SelectContent,
@@ -12,12 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Trash2, Plus } from "lucide-react";
-import {
-  claimants,
-  claimTypes,
-  benefitTypes,
-  currencies,
-} from "@/data/mock";
+import { claimants, claimTypes, benefitTypes, currencies } from "@/data/mock";
 import {
   type ClaimFormState,
   type ClaimItem,
@@ -57,36 +53,40 @@ export function Step1ClaimInfo({ form, update, onProceed }: Props) {
     update({ items: form.items.filter((it) => it.id !== id) });
 
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col gap-8">
       {/* Claimant profiles */}
-      <section>
-        <h3 className="mb-3 text-sm font-bold text-foreground">
+      <section className="flex flex-col gap-6">
+        <h3 className="text-base font-semibold text-[#212121]">
           Claimant Profile(s)
         </h3>
-        <p className="mb-3 text-xs">
-          <span className="mr-0.5 text-destructive">*</span>Select Claimant(s)
-        </p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {claimants.map((c) => (
-            <label
-              key={c.id}
-              className="flex cursor-pointer items-center gap-2.5 text-sm"
-            >
-              <Checkbox
-                checked={form.selectedClaimants.includes(c.id)}
-                onCheckedChange={() => toggleClaimant(c.id)}
-              />
-              <span>
-                {c.name} ({c.role})
-              </span>
-            </label>
-          ))}
+        <div className="flex flex-col gap-3">
+          <p className="text-sm text-[#212121]">
+            <span className="mr-1 text-destructive">*</span>Select Claimant(s)
+          </p>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {claimants.map((c) => (
+              <label
+                key={c.id}
+                className="flex cursor-pointer items-center gap-3 text-base text-[#212121]"
+              >
+                <Checkbox
+                  checked={form.selectedClaimants.includes(c.id)}
+                  onCheckedChange={() => toggleClaimant(c.id)}
+                />
+                <span>
+                  {c.name} ({c.role})
+                </span>
+              </label>
+            ))}
+          </div>
         </div>
       </section>
 
+      <div className="h-px w-full bg-black/[0.09]" />
+
       {/* Claim details */}
-      <section className="space-y-5">
-        <h3 className="text-sm font-bold text-foreground">Claim Details</h3>
+      <section className="flex flex-col gap-6">
+        <h3 className="text-base font-semibold text-[#212121]">Claim Details</h3>
 
         <Field label="Type of Claim" required>
           <Select
@@ -155,10 +155,10 @@ function StandardClaimSection({
   return (
     <>
       <Field label="Incident Date" required>
-        <Input
-          type="date"
+        <DateField
           value={form.incidentDate}
-          onChange={(e) => update({ incidentDate: e.target.value })}
+          placeholder="Select Incident Date"
+          onChange={(v) => update({ incidentDate: v })}
         />
       </Field>
 
@@ -179,31 +179,32 @@ function StandardClaimSection({
         />
       </Field>
 
-      <div>
-        <p className="mb-2 text-sm font-medium">
-          <span className="mr-0.5 text-destructive">*</span>Do you have any
+      <div className="flex flex-col gap-3">
+        <p className="text-sm text-[#212121]">
+          <span className="mr-1 text-destructive">*</span>Do you have any
           existing medical conditions?
         </p>
         <RadioGroup
+          className="gap-3"
           value={form.existingConditions}
           onValueChange={(v) =>
             update({ existingConditions: v as "yes" | "no" })
           }
         >
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <label className="flex cursor-pointer items-center gap-3 text-base text-[#212121]">
             <RadioGroupItem value="yes" /> Yes
           </label>
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <label className="flex cursor-pointer items-center gap-3 text-base text-[#212121]">
             <RadioGroupItem value="no" /> No
           </label>
         </RadioGroup>
       </div>
 
       <Field label="Treatment Date" required>
-        <Input
-          type="date"
+        <DateField
           value={form.treatmentDate}
-          onChange={(e) => update({ treatmentDate: e.target.value })}
+          placeholder="Select Treatment Date"
+          onChange={(v) => update({ treatmentDate: v })}
         />
       </Field>
     </>
@@ -228,40 +229,41 @@ function PersonalEffectSection({
 
   return (
     <>
-      <div>
-        <p className="mb-2 text-sm font-medium">
-          <span className="mr-0.5 text-destructive">*</span>Do you have single or
+      <div className="flex flex-col gap-3">
+        <p className="text-sm text-[#212121]">
+          <span className="mr-1 text-destructive">*</span>Do you have single or
           multiple item(s) to be claimed?
         </p>
         <RadioGroup
+          className="gap-3"
           value={form.itemMode}
           onValueChange={(v) => update({ itemMode: v as "single" | "multiple" })}
         >
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <label className="flex cursor-pointer items-center gap-3 text-base text-[#212121]">
             <RadioGroupItem value="single" /> Single
           </label>
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <label className="flex cursor-pointer items-center gap-3 text-base text-[#212121]">
             <RadioGroupItem value="multiple" /> Multiple
           </label>
         </RadioGroup>
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-bold text-foreground">
+        <p className="mb-3 text-base font-semibold text-[#212121]">
           Item List{" "}
           <span className="font-normal text-muted-foreground">(max 10)</span>
         </p>
 
         {/* Column headers — desktop only */}
-        <div className="mb-2 hidden grid-cols-[1fr_170px_190px_32px] gap-3 text-xs font-medium sm:grid">
+        <div className="mb-2 hidden grid-cols-[1fr_170px_190px_32px] gap-3 text-sm sm:grid">
           <span>
-            <span className="mr-0.5 text-destructive">*</span>Item Description
+            <span className="mr-1 text-destructive">*</span>Item Description
           </span>
           <span>
-            <span className="mr-0.5 text-destructive">*</span>Purchase Date
+            <span className="mr-1 text-destructive">*</span>Purchase Date
           </span>
           <span>
-            <span className="mr-0.5 text-destructive">*</span>Purchase Amount
+            <span className="mr-1 text-destructive">*</span>Purchase Amount
           </span>
           <span />
         </div>
@@ -270,10 +272,10 @@ function PersonalEffectSection({
           {rows.map((it) => (
             <div
               key={it.id}
-              className="grid grid-cols-1 gap-2 rounded-md border border-border p-3 sm:grid-cols-[1fr_170px_190px_32px] sm:items-center sm:gap-3 sm:border-0 sm:p-0"
+              className="grid grid-cols-1 gap-2 rounded-md border border-black/[0.09] p-3 sm:grid-cols-[1fr_170px_190px_32px] sm:items-center sm:gap-3 sm:border-0 sm:p-0"
             >
               <div>
-                <span className="mb-1 block text-xs font-medium sm:hidden">
+                <span className="mb-1 block text-sm sm:hidden">
                   Item Description
                 </span>
                 <Input
@@ -285,19 +287,17 @@ function PersonalEffectSection({
                 />
               </div>
               <div>
-                <span className="mb-1 block text-xs font-medium sm:hidden">
+                <span className="mb-1 block text-sm sm:hidden">
                   Purchase Date
                 </span>
-                <Input
-                  type="date"
+                <DateField
                   value={it.purchaseDate}
-                  onChange={(e) =>
-                    setItem(it.id, { purchaseDate: e.target.value })
-                  }
+                  placeholder="Select Purchase Date"
+                  onChange={(v) => setItem(it.id, { purchaseDate: v })}
                 />
               </div>
               <div>
-                <span className="mb-1 block text-xs font-medium sm:hidden">
+                <span className="mb-1 block text-sm sm:hidden">
                   Purchase Amount
                 </span>
                 <AmountInput
@@ -311,7 +311,7 @@ function PersonalEffectSection({
                 type="button"
                 onClick={() => removeItem(it.id)}
                 disabled={rows.length === 1}
-                className="flex h-9 items-center justify-center text-muted-foreground hover:text-destructive disabled:opacity-30 sm:h-10 sm:w-8"
+                className="flex h-9 items-center justify-center text-muted-foreground disabled:opacity-30 sm:h-12 sm:w-8"
                 aria-label="Remove item"
               >
                 <Trash2 className="h-4 w-4" />
@@ -325,7 +325,7 @@ function PersonalEffectSection({
             type="button"
             onClick={addItem}
             disabled={form.items.length >= MAX_ITEMS}
-            className="mt-3 flex items-center gap-1 text-sm text-muted-foreground hover:text-primary disabled:opacity-40"
+            className="mt-3 flex items-center gap-1 text-sm text-muted-foreground disabled:opacity-40"
           >
             Add Item <Plus className="h-4 w-4" />
           </button>
@@ -346,7 +346,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-2">
+    <div className="flex flex-col gap-3">
       <Label required={required}>{label}</Label>
       {children}
     </div>
@@ -365,9 +365,9 @@ function AmountInput({
   onAmount: (v: string) => void;
 }) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-3">
       <Select value={currency} onValueChange={onCurrency}>
-        <SelectTrigger className="w-[84px] shrink-0">
+        <SelectTrigger className="w-[92px] shrink-0">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

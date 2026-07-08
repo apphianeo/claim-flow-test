@@ -75,6 +75,14 @@ export const claimHistory: ClaimRecord[] = [
     submissionDate: "26/07/2025",
     status: "Completed",
   },
+  {
+    id: "c6",
+    benefit: "Medical and Accidental Dental Expenses Incurred Overseas",
+    reference: "P15XXXYYDD",
+    creationDate: "26/07/2025",
+    submissionDate: "26/07/2025",
+    status: "Draft",
+  },
 ];
 
 export interface Claimant {

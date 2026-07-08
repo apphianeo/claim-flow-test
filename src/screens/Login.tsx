@@ -22,7 +22,7 @@ export function Login({ onSubmit }: { onSubmit: () => void }) {
         className="w-full max-w-md rounded-xl border border-border bg-card p-8 shadow-sm"
       >
         <div className="flex flex-col items-center">
-          <Logo />
+          <Logo className="h-12" />
           <h1 className="mt-5 text-2xl font-bold text-foreground">
             Submit Claim
           </h1>

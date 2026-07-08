@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="44" viewBox="0 0 120 44" fill="none">
+  <g fill="#E4002B">
+    <rect x="0" y="4" width="3" height="30" rx="1.5"/>
+    <rect x="6" y="4" width="3" height="30" rx="1.5"/>
+    <rect x="12" y="4" width="3" height="30" rx="1.5"/>
+    <rect x="18" y="4" width="3" height="30" rx="1.5"/>
+    <rect x="24" y="4" width="3" height="30" rx="1.5"/>
+    <rect x="0" y="17" width="27" height="3"/>
+  </g>
+  <text x="34" y="30" font-family="'Noto Sans', Arial, sans-serif" font-size="30" font-weight="700" fill="#005EB8">UOI</text>
+  <text x="35" y="41" font-family="'Noto Sans', Arial, sans-serif" font-size="6.5" font-weight="500" letter-spacing="0.3" fill="#005EB8">MEMBER OF THE UOB GROUP</text>
+</svg>

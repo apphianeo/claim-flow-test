@@ -216,7 +216,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-2">
+    <div className="flex flex-col gap-3">
       <Label required={required}>{label}</Label>
       {children}
     </div>
